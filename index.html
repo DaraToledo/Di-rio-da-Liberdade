@@ -290,8 +290,6 @@
   <span class="topbar-logo">Aurora</span>
   <div class="topbar-actions">
     <div class="save-ind" id="save-ind"><div class="save-dot"></div>Salvo</div>
-    <button class="icon-btn" id="topbar-apoio-btn" onclick="goSecondarySection('apoio',this)" title="Rede de Apoio" aria-label="Rede de Apoio">🤝</button>
-    <button class="icon-btn" id="topbar-hist-btn" onclick="goSecondarySection('historico',this)" title="Histórico" aria-label="Histórico">📅</button>
     <button class="icon-btn" onclick="toggleTheme()" id="theme-btn" title="Modo claro/escuro">🌙</button>
     <button class="icon-btn" onclick="exportarDiario()" title="Baixar">💾</button>
     <button class="icon-btn" onclick="openInstitutional()" title="Sobre o projeto" aria-label="Sobre o projeto">ℹ️</button>
@@ -368,45 +366,38 @@
   <!-- ═══ NAVEGAÇÃO POR FASES ═══ -->
   <div class="tabs-wrap">
 
-    <!-- Barra de progresso por fases -->
-    <div class="phase-bar" id="phase-bar" role="tablist" aria-label="Fases do diário">
-      <button class="phase-tab active" id="phase-btn-0" onclick="switchPhase(0)" aria-label="Fase 1: Como estou agora">
-        <div class="phase-tab-dot"></div>
-        <div class="phase-tab-line"></div>
-        <span class="phase-tab-label">Como<br>estou</span>
+    <!-- Navegação por 3 salas (Aurora) -->
+    <div class="room-bar" id="room-bar" role="tablist" aria-label="Espaços do Aurora">
+      <button class="room-tab active" id="room-btn-dia" onclick="switchRoom('dia')" role="tab" aria-selected="true">
+        <span class="room-tab-ico">🌅</span>
+        <span class="room-tab-label">Meu dia</span>
       </button>
-      <button class="phase-tab" id="phase-btn-1" onclick="switchPhase(1)" aria-label="Fase 2: O que sinto no corpo">
-        <div class="phase-tab-dot"></div>
-        <div class="phase-tab-line"></div>
-        <span class="phase-tab-label">No<br>corpo</span>
+      <button class="room-tab" id="room-btn-historia" onclick="switchRoom('historia')" role="tab" aria-selected="false">
+        <span class="room-tab-ico">📖</span>
+        <span class="room-tab-label">Minha história</span>
       </button>
-      <button class="phase-tab" id="phase-btn-2" onclick="switchPhase(2)" aria-label="Fase 3: Minha voz">
-        <div class="phase-tab-dot"></div>
-        <div class="phase-tab-line"></div>
-        <span class="phase-tab-label">Minha<br>voz</span>
-      </button>
-      <button class="phase-tab" id="phase-btn-3" onclick="switchPhase(3)" aria-label="Fase 4: Meu poder">
-        <div class="phase-tab-dot"></div>
-        <div class="phase-tab-line"></div>
-        <span class="phase-tab-label">Meu<br>poder</span>
+      <button class="room-tab" id="room-btn-ajuda" onclick="switchRoom('ajuda')" role="tab" aria-selected="false">
+        <span class="room-tab-ico">🤝</span>
+        <span class="room-tab-label">Buscar ajuda</span>
       </button>
     </div>
 
-    <!-- Subnavegação: muda conforme a fase ativa -->
+    <!-- Subnavegação: muda conforme a sala ativa -->
     <div class="subnav-wrap">
-    <div class="subnav" id="subnav" role="tablist" aria-label="Seções da fase atual">
-      <!-- Fase 0: Como estou -->
-      <button class="tab active phase-0-tab" onclick="showPage('percepcao',this)" role="tab" aria-selected="true" aria-controls="page-percepcao">Percepção</button>
-      <button class="tab phase-0-tab" onclick="showPage('sinais',this)" role="tab" aria-selected="false" aria-controls="page-sinais">🚨 Sinais</button>
-      <!-- Fase 1: No corpo -->
-      <button class="tab hidden-tab phase-1-tab" onclick="showPage('emocional',this)" role="tab" aria-selected="false" aria-controls="page-emocional">Emoções</button>
-      <!-- Fase 2: Minha voz -->
-      <button class="tab hidden-tab phase-2-tab" onclick="showPage('reflexao',this)" role="tab" aria-selected="false" aria-controls="page-reflexao">Reflexão</button>
-      <button class="tab hidden-tab phase-2-tab" onclick="showPage('desabafo',this)" role="tab" aria-selected="false" aria-controls="page-desabafo">Desabafo</button>
-      <!-- Fase 3: Meu poder -->
-      <button class="tab hidden-tab phase-3-tab" onclick="showPage('conquistas',this)" role="tab" aria-selected="false" aria-controls="page-conquistas">🌟 Conquistas</button>
-      <button class="tab hidden-tab phase-3-tab" onclick="showPage('compromisso',this)" role="tab" aria-selected="false" aria-controls="page-compromisso">Contrato</button>
-      <button class="tab hidden-tab phase-3-tab" onclick="showPage('juridica',this)" role="tab" aria-selected="false" aria-controls="page-juridica">Jurídico ⚖</button>
+    <div class="subnav" id="subnav" role="tablist" aria-label="Seções da sala atual">
+      <!-- Sala: Meu dia -->
+      <button class="tab active room-dia-tab" onclick="showPage('percepcao',this)" role="tab" aria-selected="true" aria-controls="page-percepcao">🌫️ Desabafar</button>
+      <button class="tab room-dia-tab" onclick="showPage('emocional',this)" role="tab" aria-selected="false" aria-controls="page-emocional">💭 No corpo</button>
+      <button class="tab room-dia-tab" onclick="showPage('reflexao',this)" role="tab" aria-selected="false" aria-controls="page-reflexao">📝 Refletir</button>
+      <button class="tab room-dia-tab" onclick="showPage('desabafo',this)" role="tab" aria-selected="false" aria-controls="page-desabafo">✍️ Carta</button>
+      <!-- Sala: Minha história -->
+      <button class="tab hidden-tab room-historia-tab" onclick="showPage('historico',this)" role="tab" aria-selected="false" aria-controls="page-historico">📅 Registros</button>
+      <button class="tab hidden-tab room-historia-tab" onclick="showPage('juridica',this)" role="tab" aria-selected="false" aria-controls="page-juridica">⚖️ Relatório</button>
+      <button class="tab hidden-tab room-historia-tab" onclick="showPage('conquistas',this)" role="tab" aria-selected="false" aria-controls="page-conquistas">🌟 Conquistas</button>
+      <button class="tab hidden-tab room-historia-tab" onclick="showPage('compromisso',this)" role="tab" aria-selected="false" aria-controls="page-compromisso">🤍 Compromisso</button>
+      <!-- Sala: Buscar ajuda -->
+      <button class="tab hidden-tab room-ajuda-tab" onclick="showPage('apoio',this)" role="tab" aria-selected="false" aria-controls="page-apoio">🤝 Rede de apoio</button>
+      <button class="tab hidden-tab room-ajuda-tab" onclick="showPage('sinais',this)" role="tab" aria-selected="false" aria-controls="page-sinais">🚨 Sinais de alerta</button>
     </div>
     </div>
 
